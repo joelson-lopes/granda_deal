@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand'a Deal | Oficial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+:root {
+    --primary: #76B82A;
+    --dark: #0F0F0F;
+    --light: #F4F6F8;
+    --white: #FFFFFF;
+}
+
+body.dark {
+    --light: #121212;
+    --white: #1E1E1E;
+    --dark: #F5F5F5;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:"Poppins", sans-serif;
+    background:var(--light);
+    color:var(--dark);
+    transition:0.3s ease;
+}
+
+.hero {
+    padding:100px 20px;
+    text-align:center;
+    background:var(--white);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+h1 { font-size:2.5rem; }
+
+button.toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:var(--dark);
+    color:var(--light);
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+button.toggle i {
+    font-size:14px;
+}
+
+button.toggle:hover { opacity:0.85; }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="logo-icon">
+        <svg viewBox="0 0 220 220" class="plug-icon" xmlns="http://www.w3.org/2000/svg">
+            <path d="M160 110 A60 60 0 1 1 110 50 A40 40 0 1 0 150 110" />
+            <line x1="150" y1="110" x2="110" y2="110" />
+            <rect x="155" y="85" width="28" height="50" rx="6" class="plug-head" />
+            <line x1="168" y1="70" x2="168" y2="85" />
+            <line x1="182" y1="70" x2="182" y2="85" />
+        </svg>
+    </div>
+    <h1>Grand'a Deal</h1>
+    <p>Energia, inovação e conexão. Siga-nos nas redes sociais e fique por dentro das nossas novidades.</p>
+    <a href="mailto:ijoelson886@gmail.com" class="btn-primary">Fale Conosco</a>
+</header>
+
+<section class="social-section">
+    <h2>Nossas Redes</h2>
+    <div class="social-grid">
+        <div class="card">
+            <span>Instagram</span>
+            <a href="#" class="btn-dark">Acessar</a>
+        </div>
+        <div class="card">
+            <span>LinkedIn</span>
+            <a href="#" class="btn-dark">Acessar</a>
+        </div>
+        <div class="card">
+            <span>Facebook</span>
+            <a href="#" class="btn-dark">Acessar</a>
+        </div>
+        <div class="card">
+            <span>Profile Contact</span>
+            <a href="#" class="btn-dark">Acessar</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Entre em Contacto</h2>
+    <p>Tem alguma dúvida ou proposta? Fale conosco diretamente.</p>
+    <a href="mailto:ijoelson886@gmail.com" class="btn-light">ijoelson886@gmail.com</a>
+</section>
+
+<footer>
+    © 2026 Grand'a Deal. Todos os direitos reservados.
+</footer>
+
+
+<script>
+    const toggleBtn = document.getElementById("themeToggle");
+const themeText = document.getElementById("themeText");
+const themeIcon = document.getElementById("themeIcon");
+
+function updateButton() {
+    const isDark = document.body.classList.contains("dark");
+
+    if (isDark) {
+        themeText.textContent = "Light Mode";
+        themeIcon.textContent = "☀️";
+    } else {
+        themeText.textContent = "Dark Mode";
+        themeIcon.textContent = "🌙";
+    }
+}
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    updateButton();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
+    updateButton();
+});
+</script>
+</body>
+</html>
